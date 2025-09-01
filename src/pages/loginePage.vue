@@ -42,6 +42,7 @@
         <img src="https://www.svgrepo.com/show/355037/google.svg" alt="Google" />
         Sign in with Google
       </button>
+      <div class="q-pa-md">not registered yet?  create a  new account</div>
     </div>
   </div>
 </template>
