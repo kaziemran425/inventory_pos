@@ -25,6 +25,7 @@
               v-model="date"
               mask="####-##-##"
               placeholder="YYYY-MM-DD"
+              class="q-pa-md"
             >
               <template v-slot:append>
                 <q-icon name="event" class="cursor-pointer" />
@@ -117,7 +118,7 @@
         <div v-else>
           <q-select
             v-model="removeProduct"
-            :options="stock.map(s => s.product)"
+            :options="stock.map((s) => s.product)"
             label="Select Product to Remove"
             outlined
             class="q-mb-sm"
@@ -170,16 +171,34 @@ const showStatusPopup = ref(false);
 const isAddMode = ref(true);
 
 const stock = ref([
-  { id: "STK1001", product: "Laptop", qty: 10, price: 950.5, date: "2025-09-01" },
-  { id: "STK1002", product: "Mobile Phone", qty: 0, price: 700, date: "2025-09-02" },
-  { id: "STK1003", product: "Headphones", qty: 3, price: 120, date: "2025-09-02" }
+  {
+    id: "STK1001",
+    product: "Laptop",
+    qty: 10,
+    price: 950.5,
+    date: "2025-09-01",
+  },
+  {
+    id: "STK1002",
+    product: "Mobile Phone",
+    qty: 0,
+    price: 700,
+    date: "2025-09-02",
+  },
+  {
+    id: "STK1003",
+    product: "Headphones",
+    qty: 3,
+    price: 120,
+    date: "2025-09-02",
+  },
 ]);
 
 const newStock = ref({ id: "", product: "", qty: 1, price: 0 });
 const removeProduct = ref(null);
 
 const filteredStock = computed(() =>
-  stock.value.filter(item => !date.value || item.date === date.value)
+  stock.value.filter((item) => !date.value || item.date === date.value)
 );
 
 function getStatus(qty) {
@@ -189,11 +208,7 @@ function getStatus(qty) {
 }
 
 function getStatusClass(qty) {
-  return qty === 0
-    ? "text-red"
-    : qty < 5
-    ? "text-yellow"
-    : "text-green";
+  return qty === 0 ? "text-red" : qty < 5 ? "text-yellow" : "text-green";
 }
 
 function addStock() {
@@ -213,7 +228,9 @@ function removeStock() {
     alert("Please select a product to remove");
     return;
   }
-  stock.value = stock.value.filter(item => item.product !== removeProduct.value);
+  stock.value = stock.value.filter(
+    (item) => item.product !== removeProduct.value
+  );
   removeProduct.value = null;
   showStockPopup.value = false;
 }
