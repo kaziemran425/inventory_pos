@@ -1,77 +1,117 @@
 <!-- SignupPage.vue -->
 <template>
-  <div class="signup-page">
-    <div class="signup-card">
-      <h2>Create Account</h2>
-      <div class="q-py-md ">Manage all your inventory efficiently. Please set up your personal account.</div>
+  <div class="q-pa-md">
+    <q-card class="my-card">
+      <div class="signup-page">
+        <div class="signup-card">
+          <h2>Create Account</h2>
+          <div class="q-py-md">
+            Manage all your inventory efficiently. Please set up your personal
+            account.
+          </div>
 
-      <!-- Signup Form -->
-      <form @submit.prevent="handleSignup">
-        <!-- First Name -->
-        <div class="input-group">
-          <label>First Name</label>
-          <input v-model="firstName" type="text" placeholder="Enter first name" required />
+          <!-- Signup Form -->
+          <form @submit.prevent="handleSignup">
+            <!-- First Name -->
+            <div class="input-group">
+              <label>First Name</label>
+              <input
+                v-model="firstName"
+                type="text"
+                placeholder="Enter first name"
+                required
+              />
+            </div>
+
+            <!-- Last Name -->
+            <div class="input-group">
+              <label>Last Name</label>
+              <input
+                v-model="lastName"
+                type="text"
+                placeholder="Enter last name"
+                required
+              />
+            </div>
+
+            <!-- Email -->
+            <div class="input-group">
+              <label>Email</label>
+              <input
+                v-model="email"
+                type="email"
+                placeholder="Enter your email"
+                required
+              />
+            </div>
+
+            <!-- Phone Number -->
+            <div class="input-group">
+              <label>Phone Number</label>
+              <input
+                v-model="phone"
+                type="tel"
+                placeholder="Enter phone number"
+                required
+              />
+            </div>
+
+            <!-- Password -->
+            <div class="input-group">
+              <label>Password</label>
+              <input
+                v-model="password"
+                type="password"
+                placeholder="Enter password"
+                required
+              />
+            </div>
+
+            <!-- Confirm Password -->
+            <div class="input-group">
+              <label>Confirm Password</label>
+              <input
+                v-model="confirmPassword"
+                type="password"
+                placeholder="Confirm password"
+                required
+              />
+            </div>
+
+            <!-- Remember -->
+            <div class="options">
+              <label>
+                <input type="checkbox" v-model="remember" />
+                Remember me
+              </label>
+            </div>
+
+            <!-- Signup button -->
+            <button class="signup-btn" type="submit" :disabled="loading">
+              <span v-if="!loading">Sign Up</span>
+              <span v-else>Signing up…</span>
+            </button>
+          </form>
+
+          <!-- Divider -->
+          <div class="divider"><span>OR</span></div>
+
+          <!-- Google Signup -->
+          <button class="google-btn" @click="signUpWithGoogle">
+            <img
+              src="https://www.svgrepo.com/show/355037/google.svg"
+              alt="Google"
+            />
+            Sign up with Google
+          </button>
+
+          <!-- Already have account -->
+          <p class="login-link">
+            Already have an account? <a href="#">Login</a>
+          </p>
         </div>
-
-        <!-- Last Name -->
-        <div class="input-group">
-          <label>Last Name</label>
-          <input v-model="lastName" type="text" placeholder="Enter last name" required />
-        </div>
-
-        <!-- Email -->
-        <div class="input-group">
-          <label>Email</label>
-          <input v-model="email" type="email" placeholder="Enter your email" required />
-        </div>
-
-        <!-- Phone Number -->
-        <div class="input-group">
-          <label>Phone Number</label>
-          <input v-model="phone" type="tel" placeholder="Enter phone number" required />
-        </div>
-
-        <!-- Password -->
-        <div class="input-group">
-          <label>Password</label>
-          <input v-model="password" type="password" placeholder="Enter password" required />
-        </div>
-
-        <!-- Confirm Password -->
-        <div class="input-group">
-          <label>Confirm Password</label>
-          <input v-model="confirmPassword" type="password" placeholder="Confirm password" required />
-        </div>
-
-        <!-- Remember -->
-        <div class="options">
-          <label>
-            <input type="checkbox" v-model="remember" />
-            Remember me
-          </label>
-        </div>
-
-        <!-- Signup button -->
-        <button class="signup-btn" type="submit" :disabled="loading">
-          <span v-if="!loading">Sign Up</span>
-          <span v-else>Signing up…</span>
-        </button>
-      </form>
-
-      <!-- Divider -->
-      <div class="divider"><span>OR</span></div>
-
-      <!-- Google Signup -->
-      <button class="google-btn" @click="signUpWithGoogle">
-        <img src="https://www.svgrepo.com/show/355037/google.svg" alt="Google" />
-        Sign up with Google
-      </button>
-
-      <!-- Already have account -->
-      <p class="login-link">
-        Already have an account? <a href="#">Login</a>
-      </p>
-    </div>
+      </div>
+    </q-card>
   </div>
 </template>
 

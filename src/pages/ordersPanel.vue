@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="q-pa-md">
     <q-card class="my-card q-pa-md">
       <div class="orders-page">
         <h2 class="title">Orders</h2>
