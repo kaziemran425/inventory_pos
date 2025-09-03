@@ -1,49 +1,66 @@
 <!-- LoginPage.vue -->
 <template>
-  <div class="login-page ">
-    <div class="login-card bg-red">
-      <h2>Login</h2>
+  <div class="q-pa-md">
+    <q-card class="my-card">
+      <div class="login-page">
+        <div class="login-card bg-red">
+          <h2>Login</h2>
 
-      <!-- Login Form -->
-      <form @submit.prevent="handleLogin">
-        <!-- Email -->
-        <div class="input-group">
-          <label>Email</label>
-          <input v-model="email" type="email" placeholder="Enter email" required />
+          <!-- Login Form -->
+          <form @submit.prevent="handleLogin">
+            <!-- Email -->
+            <div class="input-group">
+              <label>Email</label>
+              <input
+                v-model="email"
+                type="email"
+                placeholder="Enter email"
+                required
+              />
+            </div>
+
+            <!-- Password -->
+            <div class="input-group">
+              <label>Password</label>
+              <input
+                v-model="password"
+                type="password"
+                placeholder="Enter password"
+                required
+              />
+            </div>
+
+            <!-- Remember + Forgot -->
+            <div class="options">
+              <label>
+                <input type="checkbox" v-model="remember" />
+                Remember me
+              </label>
+              <a href="#">Forgot password?</a>
+            </div>
+
+            <!-- Login button -->
+            <button class="login-btn" type="submit" :disabled="loading">
+              <span v-if="!loading">Log in</span>
+              <span v-else>Logging in…</span>
+            </button>
+          </form>
+
+          <!-- Divider -->
+          <div class="divider"><span>OR</span></div>
+
+          <!-- Google Sign-in -->
+          <button class="google-btn" @click="signInWithGoogle">
+            <img
+              src="https://www.svgrepo.com/show/355037/google.svg"
+              alt="Google"
+            />
+            Sign in with Google
+          </button>
+          <div class="q-pa-md">not registered yet? create a new account</div>
         </div>
-
-        <!-- Password -->
-        <div class="input-group">
-          <label>Password</label>
-          <input v-model="password" type="password" placeholder="Enter password" required />
-        </div>
-
-        <!-- Remember + Forgot -->
-        <div class="options">
-          <label>
-            <input type="checkbox" v-model="remember" />
-            Remember me
-          </label>
-          <a href="#">Forgot password?</a>
-        </div>
-
-        <!-- Login button -->
-        <button class="login-btn" type="submit" :disabled="loading">
-          <span v-if="!loading">Log in</span>
-          <span v-else>Logging in…</span>
-        </button>
-      </form>
-
-      <!-- Divider -->
-      <div class="divider"><span>OR</span></div>
-
-      <!-- Google Sign-in -->
-      <button class="google-btn" @click="signInWithGoogle">
-        <img src="https://www.svgrepo.com/show/355037/google.svg" alt="Google" />
-        Sign in with Google
-      </button>
-      <div class="q-pa-md">not registered yet?  create a  new account</div>
-    </div>
+      </div>
+    </q-card>
   </div>
 </template>
 
